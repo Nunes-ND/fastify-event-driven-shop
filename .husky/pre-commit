@@ -1,0 +1,13 @@
+echo "Running pre-commit checks with Biome..."
+
+npx biome check --write .
+
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+  echo "Biome found issues. Please review and fix them before committing."
+  exit $EXIT_CODE
+fi
+
+echo "Pre-commit checks passed."
+
